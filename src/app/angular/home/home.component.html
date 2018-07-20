@@ -1,72 +1,38 @@
 <div class="angular-articles">
-  <div class="container">
-    <div class="row projects">
-      <div class="col-sm-6 col-lg-4 item">
-        <img class="img-fluid article-images" src="../../../assets/images/angular/angularnodesetup.jpg" />
-        <h5 class="name"> <a class="angular-href" href="#">  Setup Angular 6 Application with NodeJS </a></h5>
-      </div>
-      <div class="col-sm-6 col-lg-4 item">
-        <img class="img-fluid article-images" src="../../../assets/images/angular/node.js-vs-angularjs-blog.png" />
-        <h5 class="name"> Setup Angular 6 Application with NodeJS</h5>
-        <p class="description"> Angular 6 setup through NodeJS</p>
-      </div>
-      <div class="col-sm-6 col-lg-4 item">
-        <img class="img-fluid article-images" src="../../../assets/images/angular/awsnode.png" />
-        <h5 class="name"> Setup Angular 6 Application with NodeJS</h5>
-        <p class="description"> Angular 6 setup through NodeJS</p>
-      </div>
-      <div class="col-sm-6 col-lg-4 item">
-        <img class="img-fluid article-images" src="../../../assets/images/angular/angularnodesetup.jpg" />
-        <h5 class="name">
-          <a class="angular-href" href="#"> Setup Angular 6 Application with NodeJS </a>
-        </h5>
-      </div>
-      <div class="col-sm-6 col-lg-4 item">
-        <img class="img-fluid article-images" src="../../../assets/images/angular/node.js-vs-angularjs-blog.png" />
-        <h5 class="name"> Setup Angular 6 Application with NodeJS</h5>
-        <p class="description"> Angular 6 setup through NodeJS</p>
-      </div>
-      <div class="col-sm-6 col-lg-4 item">
-        <img class="img-fluid article-images" src="../../../assets/images/angular/awsnode.png" />
-        <h5 class="name"> Setup Angular 6 Application with NodeJS</h5>
-        <p class="description"> Angular 6 setup through NodeJS</p>
-      </div>
-      <div class="col-sm-6 col-lg-4 item">
-        <img class="img-fluid article-images" src="../../../assets/images/angular/angularnodesetup.jpg" />
-        <h5 class="name">
-          <a class="angular-href" href="#"> Setup Angular 6 Application with NodeJS </a>
-        </h5>
-      </div>
-      <div class="col-sm-6 col-lg-4 item">
-        <img class="img-fluid article-images" src="../../../assets/images/angular/node.js-vs-angularjs-blog.png" />
-        <h5 class="name"> Setup Angular 6 Application with NodeJS</h5>
-        <p class="description"> Angular 6 setup through NodeJS</p>
-      </div>
-      <div class="col-sm-6 col-lg-4 item">
-        <img class="img-fluid article-images" src="../../../assets/images/angular/awsnode.png" />
-        <h5 class="name"> Setup Angular 6 Application with NodeJS</h5>
-        <p class="description"> Angular 6 setup through NodeJS</p>
-      </div>
-
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="#">Previous</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">1</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">3</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
+  <div class="container article-container">
+    <div class="btn-group" dropdown>
+      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle search-btn">
+        {{ search | titlecase }}
+        <span class="caret"></span>
+      </button>
+      <ul *dropdownMenu class="dropdown-menu af-dropdown" role="menu">
+        <li role="menuitem" (click)="filterSearch('all')">
+          <a class="dropdown-item" href="#">All</a>
+        </li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem" (click)="filterSearch('angular')">
+          <a class="dropdown-item" href="#">Angular</a>
+        </li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem">
+          <a class="dropdown-item" href="#" (click)="filterSearch('react')">React</a>
+        </li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem" (click)="filterSearch('node')">
+          <a class="dropdown-item" href="#">Node</a>
+        </li>
+      </ul>
+      <input type="search" name="search" class="article-search" placeholder="Search article here..."> 
     </div>
+    <div class="row article-list">
+      <div class="col-sm-6 col-lg-4 item" *ngFor="let article of articleList">
+        <img class="img-fluid article-images" [src]="'assets/images/angular/' + article.image">
+        <h5 class="name"> <a class="angular-href" href="#">  {{ article.title}} </a></h5>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <pagination [boundaryLinks]="true" [totalItems]="totalCount.length" (pageChanged)="pageChanged($event)" 
+     previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
   </div>
 </div>
