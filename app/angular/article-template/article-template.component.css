@@ -1,0 +1,17 @@
+.article-tempalate {
+    margin-top: 20px;
+}
+.article-tempalate .article-head {
+    padding: 30px 10px 0 10px;
+}
+.article-tempalate .article-head p {
+    font-size: 10px;
+}
+.article-tempalate .article-body {
+    margin-top: 5px;
+    padding: 10px 10px 0 10px;
+}
+
+.article-page {
+    background: #fff;
+}
